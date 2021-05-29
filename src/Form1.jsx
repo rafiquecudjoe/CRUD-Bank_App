@@ -1,150 +1,140 @@
 import React, { Component } from "react";
-import Formcss from "./Form.module.css";
 import { connect } from "react-redux";
 import { SETPROFILEDATAACTION } from ".";
-import {Button} from "@windmill/react-ui"
+import { Label, Input, Button } from "@windmill/react-ui";
 
 class Form1 extends Component {
-
-
- state = {
+  state = {
     nameOfBank: "",
     bankLocation: "",
-   accountType: "",
-   accountName: "",
-   accountNumber: "",
-   accountBalance: "",
-   accountUpdate:""
+    accountType: "",
+    accountName: "",
+    accountNumber: "",
+    accountBalance: "",
+    accountUpdate: "",
   };
 
   render() {
-   
+    const submit = (event) => {
+      event.preventDefault();
+      const {
+        nameOfBank,
+        bankLocation,
+        accountType,
+        accountName,
+        accountNumber,
+        accountBalance,
+      } = this.state;
+      this.props.SET_PROFILE_DATA({
+        nameOfBank,
+        bankLocation,
+        accountType,
+        accountName,
+        accountNumber,
+        accountBalance,
+      });
+      this.setState({
+        nameOfBank: "",
+        bankLocation: "",
+        accountType: "",
+        accountName: "",
+        accountNumber: "",
+        accountBalance: "",
+      });
+    };
+
     return (
-      <div className={Formcss.main}>
+      <div>
         <form>
-          <div>
-            <label>Name of Bank</label>
-            <input
+          <Label>
+            <span>Name of Bank</span>
+            <Input
               type="text"
               placeholder=""
               value={this.state.nameOfBank}
               onChange={(event) => {
                 this.setState({ nameOfBank: event.target.value });
               }}
+              valid
             />
-          </div>
-          <div>
-            <label>Bank Location</label>
-            <input
+          </Label>
+          <Label>
+            <span>Bank Location</span>
+            <Input
+              type="text"
               type="text"
               placeholder=""
               value={this.state.bankLocation}
               onChange={(event) => {
-                this.setState({  bankLocation: event.target.value });
+                this.setState({ bankLocation: event.target.value });
               }}
+              valid
             />
-          </div>
-          <div>
-            <label>Account Type</label>
-            <input
+          </Label>
+          <Label>
+            <span>Account Type</span>
+            <Input
               type="text"
-              placeholder=""
               value={this.state.accountType}
               onChange={(event) => {
                 this.setState({ accountType: event.target.value });
               }}
+              valid
             />
-          </div>
-          <div>
-          <label>Account Name</label>
-            <input
+          </Label>
+
+          <Label>
+            <span>Account Name</span>
+            <Input
               type="text"
-              placeholder=""
               value={this.state.accountName}
               onChange={(event) => {
                 this.setState({ accountName: event.target.value });
               }}
+              valid
             />
-
-          </div>
-          <div>
-          <label>Account Number</label>
-            <input
+          </Label>
+          <Label>
+            <span>Account Number</span>
+            <Input
               type="text"
               placeholder=""
               value={this.state.accountNumber}
               onChange={(event) => {
                 this.setState({ accountNumber: event.target.value });
               }}
+              valid
             />
-
-          </div>
-          <div>
-          <label> Acoount Balance</label>
-            <input
+          </Label>
+          <Label>
+            <span> Acoount Balance</span>
+            <Input
               type="text"
               placeholder=""
               value={this.state.accountBalance}
               onChange={(event) => {
                 this.setState({ accountBalance: event.target.value });
               }}
+              valid
             />
+          </Label>
 
-          </div>
-         
-          <Button
-            onClick={(event) => {
-              event.preventDefault();
-              const {     nameOfBank,
-              bankLocation,
-             accountType,
-             accountName,
-             accountNumber,
-             accountBalance} = this.state
-              this.props.SET_PROFILE_DATA({  nameOfBank,
-                bankLocation,
-               accountType,
-               accountName,
-               accountNumber,
-               accountBalance})
-              this.setState({
-                nameOfBank: "",
-                bankLocation: "",
-               accountType: "",
-               accountName: "",
-               accountNumber: "",
-               accountBalance
-              })
-              
-              
-            }}
+          <Button onClick={submit}>Submit</Button>
+        </form>
 
-       
-          >
-            Submit
-          </Button>
-        </form>
-        
-        <hr/>
-        <form>
-        
-         
-        </form>
+        <hr />
+        <form></form>
       </div>
     );
   }
 }
 
-
- const mapDispatchtoProps = (dispatch) => {
+const mapDispatchtoProps = (dispatch) => {
   return {
     SET_PROFILE_DATA: (value) => {
-      dispatch(SETPROFILEDATAACTION(value))
-    }
-    
-  }
-}
+      dispatch(SETPROFILEDATAACTION(value));
+    },
+  };
+};
 
-
-
-export default connect(null,mapDispatchtoProps) (Form1)
+export default connect(null, mapDispatchtoProps)(Form1);
