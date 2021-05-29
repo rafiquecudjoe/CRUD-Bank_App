@@ -5,7 +5,7 @@ function Users(props) {
   return (
     <div>
       <div>
-        <h1>User List</h1>
+        <h1>Bank Account List</h1>
         {
           props.banks.map((bank) => {
             return <Card user={bank} />;

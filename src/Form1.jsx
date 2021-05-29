@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Formcss from "./Form.module.css";
 import { connect } from "react-redux";
 import { SETPROFILEDATAACTION } from ".";
+import {Button} from "@windmill/react-ui"
 
 class Form1 extends Component {
 
@@ -91,7 +92,7 @@ class Form1 extends Component {
 
           </div>
          
-          <button
+          <Button
             onClick={(event) => {
               event.preventDefault();
               const {     nameOfBank,
@@ -121,23 +122,13 @@ class Form1 extends Component {
        
           >
             Submit
-          </button>
+          </Button>
         </form>
         
         <hr/>
         <form>
-        <div>
-            <label>Account Update</label>
-            <input
-              type="text"
-              placeholder=""
-              value={this.state.accountUpdate}
-              onChange={(event) => {
-                this.setState({ accountUpdate: event.target.value });
-              }}
-            />
-          </div>
-          <button>Update</button>
+        
+         
         </form>
       </div>
     );

@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import { windmill } from "@windmill/react-ui";
 
 // const SETACCOUNTNAMEACTION = { type: "", payload: "" };
 
@@ -15,7 +16,6 @@ export const SETPROFILEDATAACTION = (value) => ({
 
 const ProfileReducer = (state = {}, action) => {
   switch (action.type) {
-    
     case "SET_ACCOUNT_DATA":
       return { ...state, profile: [...state.profile, action.payload] };
 
@@ -28,12 +28,13 @@ const Store = createStore(ProfileReducer, {
   profile: [],
 });
 
-
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={Store}>
-      <App />
-    </Provider>
+    <windmill>
+      <Provider store={Store}>
+        <App />
+      </Provider>
+    </windmill>
   </React.StrictMode>,
   document.getElementById("root")
 );
