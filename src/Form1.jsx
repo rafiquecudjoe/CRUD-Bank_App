@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { SETPROFILEDATAACTION } from ".";
 import { Label, Input, Button } from "@windmill/react-ui";
+import userEvent from "@testing-library/user-event";
 
 class Form1 extends Component {
   state = {
@@ -13,6 +14,8 @@ class Form1 extends Component {
     accountBalance: "",
     accountUpdate: "",
   };
+
+
 
   render() {
     const submit = (event) => {
@@ -33,6 +36,7 @@ class Form1 extends Component {
         accountNumber,
         accountBalance,
       });
+     
       this.setState({
         nameOfBank: "",
         bankLocation: "",
@@ -107,7 +111,7 @@ class Form1 extends Component {
             />
           </Label>
           <Label>
-            <span> Acoount Balance</span>
+            <span> Account Balance</span>
             <Input
               type="text"
               placeholder=""
@@ -120,14 +124,18 @@ class Form1 extends Component {
           </Label>
 
           <Button onClick={submit}>Submit</Button>
+          
         </form>
 
-        <hr />
-        <form></form>
+      
+       
       </div>
     );
   }
 }
+
+
+
 
 const mapDispatchtoProps = (dispatch) => {
   return {

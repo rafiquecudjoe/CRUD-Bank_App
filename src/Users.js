@@ -1,8 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Card, CardBody, Button } from "@windmill/react-ui";
+
+import Card1 from "./components/Card1"
 
 function Users(props) {
+
+ 
   return (
     <div style={{ display: "flex" }}>
       <div>
@@ -17,37 +20,14 @@ function Users(props) {
   );
 }
 
-const Card1 = (props) => {
-  return (
-    <div style={{ display: "inline-grid" }}>
-      <div>
-        <Card colored className="bg-purple-600">
-          <CardBody>
-            <p className="mb-4 font-semibold text-white">Account Details</p>
-            <p className="text-white">
-              <p>Name of Bank: {props.user.nameOfBank}</p>
-              <p>Bank Location: {props.user.bankLocation}</p>
-              <p>Account Type: {props.user.accountType}</p>
-              <p>Account Name: {props.user.accountName}</p>
-              <p>Account Number: {props.user.accountNumber}</p>
-              <p>Account Balance: {props.user.accountBalance}</p>
-            </p>
-          </CardBody>
-        </Card>
-      </div>
-      <div>
-        <Button>Delete</Button>
 
-        <Button>Edit</Button>
-      </div>
-    </div>
-  );
-};
+
 
 const mapStateToProps = (state) => {
   return {
     banks: state.profile,
   };
 };
+
 
 export default connect(mapStateToProps)(Users);

@@ -14,11 +14,35 @@ export const SETPROFILEDATAACTION = (value) => ({
   payload: value,
 });
 
+
+export const updateuseraction = (value) => ({
+  type: "UPDATE_USER",
+  payload: value,
+});
+
+
+
+export const deleteuseraction = (value) => ({
+  type: "DELETE_USER",
+  payload: value,
+});
+
 const ProfileReducer = (state = {}, action) => {
   switch (action.type) {
     case "SET_ACCOUNT_DATA":
       return { ...state, profile: [...state.profile, action.payload] };
 
+    case "DELETE_USER":
+      return {
+        ...state,
+        profile: state.profile.filter((profile, index) => profile.name !== action.payload.name),
+      };
+    case "UPDATE_USER" :
+      return {
+        ...state,
+        profile: state.profile.map((profile, index) => profile.name !== action.payload.name)
+
+      }
     default:
       return state;
   }
